@@ -41,8 +41,31 @@ class Airplane {
 */
 
 class Person {
-
+  constructor(name, age){
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+  }
+  eat(food){
+    if(this.stomach.length < 10){
+    this.stomach.push(food);
+    }
+    return this.stomach;
+  }
+  poop(){
+    this.stomach = [];
+  }
+  toString(){
+    return (`${this.name}, ${this.age}`);
+  }
 }
+
+const mikayla = new Person('Mikayla', 19);
+
+mikayla.eat("bread");
+mikayla.eat("pickle");
+mikayla.poop();
+mikayla.eat("cake");
 
 /*
   TASK 2
@@ -59,8 +82,31 @@ class Person {
 */
 
 class Car {
-
+  constructor (model, milesPerGallon){
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
+  }
+  fill(gallons){
+    return this.tank += gallons;
+  }
+  drive(distance){
+    let maxMileage = this.tank * this.milesPerGallon;
+    if(distance > maxMileage){
+      return `I ran out of fuel at ${Math.round(maxMileage)} miles!`;
+      } else {
+      this.odometer += distance;
+      this.tank -= distance / this.milesPerGallon;
+      return `My odometer now reads ${this.odometer} miles and I have ${Math.round(this.tank)} gallons of gas remaining.`
+     }
+  }
 }
+
+const dodgeNeon = new Car ("Dodge Neon", 29);
+
+dodgeNeon.fill(13);
+dodgeNeon.drive(600);
 
 /*
   TASK 3
@@ -93,7 +139,12 @@ class Lambdasian {
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 class Instructor {
+    constructor(attributes){
+      this.specialty = attributes.specialty;
+      this.favLanguage = attributes.favLanguage;
+      this.catchPhrase = attributes.catchPhrase;
 
+    }
 }
 
 /*
