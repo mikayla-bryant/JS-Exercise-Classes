@@ -161,6 +161,12 @@ class Instructor extends Lambdasian{
   this.favLanguage = attributes.favLanguage;
   this.catchPhrase = attributes.catchPhrase;
   }
+  demo(subject){
+    return `Today we are learning about ${subject}.`
+  }
+  grade(studentObject, subject){
+      return `${studentObject.name} receives a perfect score on ${subject}.`
+  }
 }
 
 Instructor.prototype = Object.create(Lambdasian.prototype);
@@ -231,9 +237,30 @@ const rick = new Student ({
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-
+class ProjectManager extends Instructor{
+  constructor(attributes){
+    super(attributes);
+    this.gradClassName = attributes.gradClassName;
+    this.favInstructor = attributes.favInstructor;
+  }
+  standUp(channelName){
+    return `${this.name} announces to ${channelName}, @channel standy times!`
+  }
+  debugsCode(studentObject, subject){
+    return `${this.name} debugs ${studentObject.name}'s code on ${subject}.`
+  }
 }
+ProjectManager.prototype = Object.create(Instructor.prototype);
+const meredith = new ProjectManager({
+  name: "Meredith",
+  age: 53,
+  location: "Vermont",
+  specialty: "Data Science",
+  favLanguage: "R",
+  catchPhrase: "Don't overthink it.",
+  gradClassName: "CS1",
+  favInstructor: "Ashley"
+});
 
 /*
   STRETCH PROBLEM (no tests!)
