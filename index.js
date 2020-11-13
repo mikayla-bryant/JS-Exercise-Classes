@@ -121,17 +121,21 @@ dodgeNeon.drive(600);
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-  constructor (name, age, location){
-    this.name = name;
-    this.age = age;
-    this.location = location;
+  constructor(attributes){
+    this.name = attributes.name;
+    this.age = attributes.age;
+    this.location = attributes.location;
   }
   speak(){
     return `Hello my name is ${this.name}, I am from ${this.location}.`
   }
 }
 
-const mbryant = new Lambdasian("Mikayla", 19, "Florida");
+const mbryant = new Lambdasian({
+  name: "Mikayla", 
+  age: 19, 
+  location: "Florida"
+  });
 
 mbryant.speak();
 
